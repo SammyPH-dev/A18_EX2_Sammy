@@ -1,6 +1,8 @@
 package school.a18.a18_ex2_sammy;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -11,6 +13,11 @@ public class HelloServlet extends HttpServlet {
 
     public void init() {
         message = "Hello World!";
+        try {
+            Files.list(Paths.get(".")).forEach(p -> System.out.println(p.getFileName()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
