@@ -14,7 +14,9 @@ public class HelloServlet extends HttpServlet {
     public void init() {
         message = "Hello World!";
         try {
+            System.out.println("========List de fichier============");
             Files.list(Paths.get(".")).forEach(p -> System.out.println(p.getFileName()));
+            System.out.println("=======fin============");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
